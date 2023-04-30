@@ -3,7 +3,7 @@ import CountUp from 'react-countup';
 import styles from './AgeCalcResults.module.scss';
 
 type Measure = {
-  value: number | string | null;
+  value: number;
   metric: string;
 };
 
@@ -40,7 +40,7 @@ const AgeCalcResults = ({ measures }: AgeCalcResultsProps) => {
     <div className={styles.wrapper} data-testid="age-calc-results">
       {measures.map((measure) => (
         <Result
-          key={measure.value + measure.metric}
+          key={measure.value.toString() + measure.metric}
           value={measure.value}
           metric={measure.metric}
         />

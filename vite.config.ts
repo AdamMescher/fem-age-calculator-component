@@ -24,5 +24,10 @@ export default defineConfig({
     coverage: {
       exclude: ['./__e2e__'],
     },
+    deps: {
+      inline: [
+        "countup.js"
+      ]
+    },
   },
 });

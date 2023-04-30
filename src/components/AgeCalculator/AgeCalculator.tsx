@@ -10,18 +10,23 @@ import AgeCalcResults from '@/components/AgeCalcResults';
 import styles from './AgeCalculator.module.scss';
 import rules from './rules';
 
-interface DateFormValues {
-  day: string;
-  month: string;
-  year: string;
+type Measure = {
+  value: number;
+  metric: string;
 }
 
-interface AgeCalculatorProps {}
+interface DateFormValues {
+  day: string | undefined | null;
+  month: string | undefined | null;
+  year: string | undefined | null;
+}
 
-const AgeCalculator = ({}: AgeCalculatorProps) => {
-  const [days, setDays] = React.useState<string | null>(null);
-  const [months, setMonths] = React.useState<string | null>(null);
-  const [years, setYears] = React.useState<string | null>(null);
+interface AgeCalculatorProps { }
+
+const AgeCalculator = ({ }: AgeCalculatorProps) => {
+  const [days, setDays] = React.useState<any>(null);
+  const [months, setMonths] = React.useState<any>(null);
+  const [years, setYears] = React.useState<any>(null);
 
   const {
     handleSubmit,
@@ -39,16 +44,19 @@ const AgeCalculator = ({}: AgeCalculatorProps) => {
 
   const onSubmit = (data: DateFormValues) => {
     const { day, month, year } = data;
+
     const date = {
-      day: parseInt(day),
-      month: parseInt(month),
-      year: parseInt(year),
-    };
-    var dt = DateTime.fromObject({
+      day: Math.floor(Number(day)),
+      month: Math.floor(Number(month)),
+      year: Math.floor(Number(year)),
+    }
+
+    const dt = DateTime.fromObject({
       day: date.day,
       month: date.month,
       year: date.year,
     });
+
     if (!dt.isValid) {
       setError(
         'day',
@@ -75,7 +83,7 @@ const AgeCalculator = ({}: AgeCalculatorProps) => {
 
       const newYears = diff?.years?.toString();
       const newMonths = diff?.months?.toString();
-      const newDays = Math.floor(diff?.days).toString();
+      const newDays = Math.floor(diff.days ? diff.days : 0).toString();
 
       setYears(newYears);
       setMonths(newMonths);
@@ -88,7 +96,6 @@ const AgeCalculator = ({}: AgeCalculatorProps) => {
       <div>
         <Form
           id="ageCalculatorForm"
-          className={styles.form}
           onSubmit={handleSubmit(onSubmit)}
         >
           <Input
@@ -130,9 +137,9 @@ const AgeCalculator = ({}: AgeCalculatorProps) => {
       </div>
       <AgeCalcResults
         measures={[
-          { value: years, metric: 'years ' },
-          { value: months, metric: 'months ' },
-          { value: days, metric: 'days ' },
+          { value: years || 0, metric: 'years ' },
+          { value: months || 0, metric: 'months ' },
+          { value: days || 0, metric: 'days ' },
         ]}
       />
     </section>
