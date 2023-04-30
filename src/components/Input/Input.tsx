@@ -22,7 +22,7 @@ const Input = ({
   const { field } = useController(props);
 
   return (
-    <div className={styles.wrapper} data-testid="input">
+    <div className={styles.wrapper}>
       {
         <label
           className={
@@ -34,6 +34,7 @@ const Input = ({
         </label>
       }
       <input
+        id={props.name}
         className={errors[props.name] ? styles['input-invalid'] : 'input-valid'}
         {...field}
         aria-invalid={errors[props.name] ? 'true' : 'false'}
