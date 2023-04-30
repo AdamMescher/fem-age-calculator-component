@@ -1,0 +1,108 @@
+@use './typography.scss';
+
+:root {
+  --layout-desktop: 1440px;
+  --layout-min-width: 600px;
+  --color-primary-purple: hsl(259, 100%, 65%);
+  --color-primary-purple-hsl: 259, 100%, 65%;
+  --color-primary-light-red: hsl(0, 100%, 67%);
+  --color-primary-light-red-hsl: 0, 100%, 67%;
+  --color-neutral-white: hsl(0, 0%, 100%);
+  --color-neutral-white-hsl: 0, 0%, 100%;
+  --color-neutral-off-white: hsl(0, 0%, 94%);
+  --color-neutral-off-white-hsl: 0, 0%, 94%;
+  --color-neutral-light-gray: hsl(0, 0%, 86%);
+  --color-neutral-light-gray-hsl: 0, 0%, 86%;
+  --color-neutral-smokey-grey: hsl(0, 1%, 44%);
+  --color-neutral-smokey-grey-hsl: 0, 1%, 44%;
+  --color-neutral-off-black: hsl(0, 0%, 8%);
+  --color-neutral-off-black-hsl: 0, 0%, 8%;
+  --weight-regular: 400;
+  --weight-bold: 700;
+  --weight-extra-bold: 800;
+  --normal: normal;
+  --italic: italic;
+  --body-copy: 32px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+html {
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+html {
+  min-height: 100%;
+  height: 100vh;
+  width: 100%;
+}

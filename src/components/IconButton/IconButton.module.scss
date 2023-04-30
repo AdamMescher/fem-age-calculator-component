@@ -1,0 +1,46 @@
+.wrapper {
+  --button-size: 64px;
+  --icon-size: 24px;
+  background: none;
+  border: none;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  border-radius: 50%;
+  background-color: var(--color-primary-purple);
+  height: var(--button-size);
+  width: var(--button-size);
+}
+
+.wrapper:hover {
+  cursor: pointer;
+  background-color: var(--color-neutral-off-black);
+}
+
+.wrapper:focus-visible {
+  outline-offset: 4px;
+  outline-color: var(--color-primary-purple);
+}
+
+.wrapper:active {
+  background-color: hsl(var(--color-neutral-off-black-hsl), 0.8);
+}
+
+.wrapper svg {
+  border-radius: 50%;
+  color: var(--color-neutral-white);
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 650px) {
+  .wrapper {
+    height: 96px;
+    width: 96px;
+  }
+
+  .wrapper svg {
+    height: 44px;
+    width: 44px;
+  }
+}
