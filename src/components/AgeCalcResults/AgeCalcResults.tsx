@@ -1,9 +1,9 @@
 import * as React from 'react';
-import CountUp from 'react-countup';
+import AnimatedNumber from '@/components/AnimatedNumber';
 import styles from './AgeCalcResults.module.scss';
 
 type Measure = {
-  value: number;
+  value:  string | null;
   metric: string;
 };
 
@@ -12,22 +12,32 @@ type ResultProps = {
   metric: string;
 };
 
+type ResultNullProps = {
+  metric: string;
+};
+
 interface AgeCalcResultsProps {
   measures: Measure[];
 }
 
-const Result = ({ value, metric }: ResultProps) => {
-  const countAnimationDuration = 1;
-
+const ResultNull = ({ metric }: ResultNullProps) => {
   return (
-    <div className={styles.result}>
+    <div className={styles.result} key={metric}>
+      <p>
+        <span>--</span>
+        {metric}
+      </p>
+    </div>
+  );
+};
+
+const Result = ({ value, metric }: ResultProps) => {
+  console.log({ value, metric });
+  return (
+    <div className={styles.result} key={metric}>
       <p>
         <span>
-          {value ? (
-            <CountUp end={value} duration={countAnimationDuration} />
-          ) : (
-            '--'
-          )}
+          <AnimatedNumber start={0} end={parseInt(value)} />
         </span>
         {metric}
       </p>
@@ -36,15 +46,20 @@ const Result = ({ value, metric }: ResultProps) => {
 };
 
 const AgeCalcResults = ({ measures }: AgeCalcResultsProps) => {
+  console.log({ measures });
   return (
     <div className={styles.wrapper} data-testid="age-calc-results">
-      {measures.map((measure) => (
-        <Result
-          key={measure.value.toString() + measure.metric}
-          value={measure.value}
-          metric={measure.metric}
-        />
-      ))}
+      {measures.map((measure) =>
+        measure.value !== null ? (
+          <Result
+            key={measure.value + measure.metric}
+            value={parseInt(measure.value)}
+            metric={measure.metric}
+          />
+        ) : (
+          <ResultNull metric={measure.metric} />
+        )
+      )}
     </div>
   );
 };
