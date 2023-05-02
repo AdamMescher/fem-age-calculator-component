@@ -22,7 +22,7 @@ const AnimatedNumber = ({ start, end }: AnimatedNumberProps) => {
   });
 
   return (
-    <animated.span className={styles.wrapper}>
+    <animated.span className={styles.wrapper} data-testid="animated-number">
       {number.to((num: number) => num.toFixed(0))}
     </animated.span>
   );
