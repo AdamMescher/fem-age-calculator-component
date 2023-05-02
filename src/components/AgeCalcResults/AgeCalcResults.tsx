@@ -8,7 +8,7 @@ type Measure = {
 };
 
 type ResultProps = {
-  value: number;
+  value: string;
   metric: string;
 };
 
@@ -32,12 +32,12 @@ const ResultNull = ({ metric }: ResultNullProps) => {
 };
 
 const Result = ({ value, metric }: ResultProps) => {
-  console.log({ value, metric });
+  const end = parseInt(value);
   return (
     <div className={styles.result} key={metric}>
       <p>
         <span>
-          <AnimatedNumber start={0} end={parseInt(value)} />
+          <AnimatedNumber start={0} end={end} />
         </span>
         {metric}
       </p>
@@ -46,14 +46,13 @@ const Result = ({ value, metric }: ResultProps) => {
 };
 
 const AgeCalcResults = ({ measures }: AgeCalcResultsProps) => {
-  console.log({ measures });
   return (
     <div className={styles.wrapper} data-testid="age-calc-results">
       {measures.map((measure) =>
         measure.value !== null ? (
           <Result
             key={measure.value + measure.metric}
-            value={parseInt(measure.value)}
+            value={measure.value}
             metric={measure.metric}
           />
         ) : (
