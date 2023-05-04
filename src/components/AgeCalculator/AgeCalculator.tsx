@@ -10,11 +10,6 @@ import AgeCalcResults from '@/components/AgeCalcResults';
 import styles from './AgeCalculator.module.scss';
 import rules from './rules';
 
-type Measure = {
-  value: number;
-  metric: string;
-}
-
 interface DateFormValues {
   day: string | undefined | null;
   month: string | undefined | null;
@@ -83,7 +78,7 @@ const AgeCalculator = ({ }: AgeCalculatorProps) => {
 
       const newYears = diff?.years?.toString();
       const newMonths = diff?.months?.toString();
-      const newDays = Math.floor(diff.days ? diff.days : 0).toString();
+      const newDays = Math.floor(Number(diff?.days))?.toString();
 
       setYears(newYears);
       setMonths(newMonths);
