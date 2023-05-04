@@ -3,7 +3,7 @@ import AnimatedNumber from '@/components/AnimatedNumber';
 import styles from './AgeCalcResults.module.scss';
 
 type Measure = {
-  value:  string | null;
+  value: string | null;
   metric: string;
 };
 
@@ -56,7 +56,7 @@ const AgeCalcResults = ({ measures }: AgeCalcResultsProps) => {
             metric={measure.metric}
           />
         ) : (
-          <ResultNull metric={measure.metric} />
+          <ResultNull key={measure.metric} metric={measure.metric} />
         )
       )}
     </div>

@@ -9,7 +9,7 @@ describe('AgeCalcResults Component', () => {
   it('Should render without errors', () => {
     const measures = [{ value: "5", metric: 'years' }];
 
-    render(<AgeCalcResults key={measures[0].metric} measures={measures} />);
+    render(<AgeCalcResults measures={measures} />);
 
     expect(screen.getByTestId('age-calc-results')).toBeInTheDocument();
   });
@@ -17,10 +17,17 @@ describe('AgeCalcResults Component', () => {
     const measures = [{ value: "5", metric: 'years' }];
 
     const { container } = render(
-      <AgeCalcResults key={measures[0].metric} measures={measures} />
+      <AgeCalcResults measures={measures} />
     );
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
+  });
+  it('Should render -- if value passed is null', () => {
+    const measures = [{ value: null, metric: 'years' }];
+
+    render(<AgeCalcResults measures={measures} />);
+
+    expect(screen.getByText('--')).toBeInTheDocument();
   });
 });
