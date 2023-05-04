@@ -1,4 +1,19 @@
 .wrapper {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
+}
+
+.wrapper div {
+  width: 100%;
+}
+
+.wrapper div:last-of-type {
+  display: none;
+}
+
+
+@media (min-width: 650px) {
+  .wrapper div:last-of-type {
+    display: block;
   }
+}

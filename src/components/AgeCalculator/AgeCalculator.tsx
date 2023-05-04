@@ -123,6 +123,7 @@ const AgeCalculator = ({ }: AgeCalculatorProps) => {
             rules={rules.year}
             errors={errors}
           />
+          <div />
         </Form>
       </div>
       <div className={styles.divider}>
