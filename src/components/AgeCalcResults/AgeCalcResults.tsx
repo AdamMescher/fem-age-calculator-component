@@ -25,6 +25,7 @@ const ResultNull = ({ metric }: ResultNullProps) => {
     <div className={styles.result} key={metric}>
       <p>
         <span>--</span>
+        {' '}
         {metric}
       </p>
     </div>
@@ -37,6 +38,7 @@ const Result = ({ value, metric }: ResultProps) => {
     <div className={styles.result} key={metric} data-testid={`result-${metric}`}>
       <p>
         <AnimatedNumber start={0} end={end} />
+        {' '}
         {metric}
       </p>
     </div>

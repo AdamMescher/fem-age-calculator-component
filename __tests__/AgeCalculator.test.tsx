@@ -31,9 +31,9 @@ describe('AgeCalculator Component', () => {
 
     await waitFor(() => {
       const results = screen.getByTestId('age-calc-results');
-      expect(within(results).getByText('days')).toHaveTextContent(/19days/i);
-      expect(within(results).getByText('month')).toHaveTextContent(/1month/i);
-      expect(within(results).getByText('years')).toHaveTextContent(/38years/i);
+      expect(within(results).getByText('days')).toHaveTextContent(/19 days/i);
+      expect(within(results).getByText('month')).toHaveTextContent(/1 month/i);
+      expect(within(results).getByText('years')).toHaveTextContent(/38 years/i);
     })
   });
   it('Should render inline errors if form is submitted with no input values', async () => {
