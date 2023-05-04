@@ -30,4 +30,18 @@ describe('AgeCalcResults Component', () => {
 
     expect(screen.getByText('--')).toBeInTheDocument();
   });
+  it('Should render without "s" if value passed is equal to one', () => {
+    const measures = [{ value: "1", metric: 'year' }];
+
+    render(<AgeCalcResults measures={measures} />);
+
+    expect(screen.getByText('year')).toBeInTheDocument();
+  });
+  it('Should render "s" if value passed is greater than one', () => {
+    const measures = [{ value: "22", metric: 'year' }];
+
+    render(<AgeCalcResults measures={measures} />);
+
+    expect(screen.getByText('years')).toBeInTheDocument();
+  });
 });
