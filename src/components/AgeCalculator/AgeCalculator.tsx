@@ -132,9 +132,9 @@ const AgeCalculator = ({ }: AgeCalculatorProps) => {
       </div>
       <AgeCalcResults
         measures={[
-          { value: years || 0, metric: 'year' },
-          { value: months || 0, metric: 'month' },
-          { value: days || 0, metric: 'day' },
+          { value: years, metric: 'year' },
+          { value: months, metric: 'month' },
+          { value: days, metric: 'day' },
         ]}
       />
     </section>
