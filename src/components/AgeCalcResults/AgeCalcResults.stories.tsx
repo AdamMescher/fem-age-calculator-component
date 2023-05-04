@@ -10,6 +10,19 @@ export default {
 type Story = StoryObj<typeof AgeCalcResults>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    measures: [{ value: "105", metric: 'years ' },
+    { value: "8", metric: 'months ' },
+    { value: "31", metric: 'days ' }]
+  },
+  render: (args: any) => <AgeCalcResults {...args} />,
+};
+
+export const Null: Story = {
+  args: {
+    measures: [{ value: null, metric: 'years ' },
+    { value: null, metric: 'months ' },
+    { value: null, metric: 'days ' }]
+  },
   render: (args: any) => <AgeCalcResults {...args} />,
 };
