@@ -1,6 +1,5 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-import Script from 'next/script';
 import styles from '../styles/RootLayout.module.scss';
 import '../styles/globals.scss';
 
