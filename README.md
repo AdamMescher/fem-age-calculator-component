@@ -1,3 +1,4 @@
 # fem-age-calculator-component
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/next-template-fit5og)
+Live Code Edit: [StackBlitz ⚡️](https://stackblitz.com/edit/next-template-fit5og)
+Live Site: [Vercel](https://fem-age-calculator-component.vercel.app/)
