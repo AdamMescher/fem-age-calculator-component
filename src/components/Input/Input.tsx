@@ -32,6 +32,7 @@ const Input = ({
         </label>
       }
       <input
+        id={props.name}
         className={errors[props.name] ? styles['input-invalid'] : 'input-valid'}
         {...field}
         aria-invalid={errors[props.name] ? 'true' : 'false'}

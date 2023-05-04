@@ -34,11 +34,9 @@ const ResultNull = ({ metric }: ResultNullProps) => {
 const Result = ({ value, metric }: ResultProps) => {
   const end = parseInt(value);
   return (
-    <div className={styles.result} key={metric}>
+    <div className={styles.result} key={metric} data-testid={`result-${metric}`}>
       <p>
-        <span>
-          <AnimatedNumber start={0} end={end} />
-        </span>
+        <AnimatedNumber start={0} end={end} />
         {metric}
       </p>
     </div>
@@ -51,12 +49,14 @@ const AgeCalcResults = ({ measures }: AgeCalcResultsProps) => {
       {measures.map((measure) =>
         measure.value !== null ? (
           <Result
+            data-testid={`result-${measure.metric}`}
             key={measure.value + measure.metric}
             value={measure.value}
-            metric={measure.metric}
+            metric={measure.value === "1" ? measure.metric : measure.metric + 's'}
+
           />
         ) : (
-          <ResultNull key={measure.metric} metric={measure.metric} />
+          <ResultNull data-testid={`result-${measure.metric}`} key={measure.metric} metric={measure.metric} />
         )
       )}
     </div>
