@@ -10,6 +10,9 @@ export default {
 type Story = StoryObj<typeof AnimatedNumber>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    start: 0,
+    end: 100,
+  },
   render: (args: any) => <AnimatedNumber {...args} />,
 };
