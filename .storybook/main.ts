@@ -23,7 +23,7 @@ const config: StorybookConfig = {
       to: '/assets/fonts/',
     },
   ],
-  webpackFinal: async (config) => { // 👈 and add this here
+  webpackFinal: async (config: any) => {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': path.resolve(__dirname, '../src/'),
