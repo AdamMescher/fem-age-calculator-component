@@ -24,7 +24,7 @@ const ResultNull = ({ metric }: ResultNullProps) => {
   return (
     <div className={styles.result} key={metric}>
       <p>
-        <span>--</span>
+        <span>- -</span>
         {' '}
         {metric}
       </p>
@@ -57,7 +57,7 @@ const AgeCalcResults = ({ measures }: AgeCalcResultsProps) => {
 
           />
         ) : (
-          <ResultNull key={measure.metric} metric={measure.metric} />
+          <ResultNull key={measure.metric} metric={measure.metric + 's'} />
         )
       )}
     </div>
