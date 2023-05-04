@@ -41,7 +41,7 @@ describe('Input Component', () => {
 
     render(<InputWithForm />);
 
-    expect(screen.getByTestId('input')).toBeInTheDocument();
+    expect(screen.getByRole('textbox', { name: 'First Name' })).toBeInTheDocument();
   });
   it('Should render without Axe Core A11Y errors', async () => {
     interface FormValues {
@@ -80,8 +80,6 @@ describe('Input Component', () => {
     expect(results).toHaveNoViolations();
   });
   it('Should show inline error message if input error is invalid', async () => {
-    const user = userEvent.setup();
-
     const InputWithForm = () => {
       const type = 'text';
       const name = 'firstName';

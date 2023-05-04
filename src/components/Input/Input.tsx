@@ -9,7 +9,6 @@ const Input = ({
   placeholder,
   inputMode,
   errors,
-  onBlur,
   ...props
 }: {
   label: string;
@@ -17,7 +16,6 @@ const Input = ({
   type?: 'text' | 'number' | 'date';
   inputMode?: React.HTMLAttributes<HTMLLIElement>['inputMode'];
   errors?: any;
-  onBlur?: any;
 } & UseControllerProps<any>) => {
   const { field } = useController(props);
 
@@ -41,7 +39,6 @@ const Input = ({
         type={type}
         inputMode={inputMode}
         placeholder={placeholder}
-        onBlur={onBlur}
       />
       {!errors[props.name] && <p className={styles['error-empty']} />}
       <ErrorMessage

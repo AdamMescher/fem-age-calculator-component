@@ -1,14 +1,18 @@
 import * as React from 'react';
-import CountUp from 'react-countup';
+import AnimatedNumber from '@/components/AnimatedNumber';
 import styles from './AgeCalcResults.module.scss';
 
 type Measure = {
-  value: number | string | null;
+  value: string | null;
   metric: string;
 };
 
 type ResultProps = {
-  value: number;
+  value: string;
+  metric: string;
+};
+
+type ResultNullProps = {
   metric: string;
 };
 
@@ -16,19 +20,25 @@ interface AgeCalcResultsProps {
   measures: Measure[];
 }
 
-const Result = ({ value, metric }: ResultProps) => {
-  const countAnimationDuration = 1;
-
+const ResultNull = ({ metric }: ResultNullProps) => {
   return (
-    <div className={styles.result}>
+    <div className={styles.result} key={metric}>
       <p>
-        <span>
-          {value ? (
-            <CountUp end={value} duration={countAnimationDuration} />
-          ) : (
-            '--'
-          )}
-        </span>
+        <span>--</span>
+        {' '}
+        {metric}
+      </p>
+    </div>
+  );
+};
+
+const Result = ({ value, metric }: ResultProps) => {
+  const end = parseInt(value);
+  return (
+    <div className={styles.result} key={metric} data-testid={`result-${metric}`}>
+      <p>
+        <AnimatedNumber start={0} end={end} />
+        {' '}
         {metric}
       </p>
     </div>
@@ -38,13 +48,19 @@ const Result = ({ value, metric }: ResultProps) => {
 const AgeCalcResults = ({ measures }: AgeCalcResultsProps) => {
   return (
     <div className={styles.wrapper} data-testid="age-calc-results">
-      {measures.map((measure) => (
-        <Result
-          key={measure.value + measure.metric}
-          value={measure.value}
-          metric={measure.metric}
-        />
-      ))}
+      {measures.map((measure) =>
+        measure.value !== null ? (
+          <Result
+            data-testid={`result-${measure.metric}`}
+            key={measure.value + measure.metric}
+            value={measure.value}
+            metric={measure.value === "1" ? measure.metric : measure.metric + 's'}
+
+          />
+        ) : (
+          <ResultNull data-testid={`result-${measure.metric}`} key={measure.metric} metric={measure.metric} />
+        )
+      )}
     </div>
   );
 };

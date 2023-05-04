@@ -22,7 +22,7 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './__tests__/setup.ts',
     coverage: {
-      exclude: ['./__e2e__'],
+      exclude: ['**/__e2e__/**', '**/__tests__/**',],
     },
   },
 });

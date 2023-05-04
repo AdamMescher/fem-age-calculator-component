@@ -10,6 +10,8 @@ export default {
 type Story = StoryObj<typeof IconButton>;
 
 export const Default: Story = {
-  args: {},
-  render: (args: any) => <IconButton {...args} />,
+  args: {
+    icon: 'arrow',
+  },
+  render: (args: any) => <IconButton label="submit" {...args} />,
 };

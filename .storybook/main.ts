@@ -1,4 +1,6 @@
+const path = require('path');
 import type { StorybookConfig } from '@storybook/nextjs';
+
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -21,5 +23,12 @@ const config: StorybookConfig = {
       to: '/assets/fonts/',
     },
   ],
+  webpackFinal: async (config) => { // 👈 and add this here
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, '../src/'),
+    };
+    return config;
+  },
 };
 export default config;

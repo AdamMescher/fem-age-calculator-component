@@ -10,6 +10,7 @@
   background-color: var(--color-primary-purple);
   height: var(--button-size);
   width: var(--button-size);
+  position: "relative";
 }
 
 .wrapper:hover {
@@ -26,10 +27,10 @@
   background-color: hsl(var(--color-neutral-off-black-hsl), 0.8);
 }
 
-.wrapper svg {
+.wrapper img {
   border-radius: 50%;
-  color: var(--color-neutral-white);
-  width: 100%;
+  height: 50%;
+  width: 50%;
   height: auto;
 }
 
@@ -39,7 +40,7 @@
     width: 96px;
   }
 
-  .wrapper svg {
+  .wrapper img {
     height: 44px;
     width: 44px;
   }
