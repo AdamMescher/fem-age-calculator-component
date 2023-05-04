@@ -133,7 +133,7 @@ const AgeCalculator = ({ }: AgeCalculatorProps) => {
       <div className={styles.divider}>
         <div />
         <div />
-        <IconButton type="submit" label="submit" form="ageCalculatorForm" />
+        <IconButton type="submit" label="submit" form="ageCalculatorForm" icon="arrow" />
       </div>
       <AgeCalcResults
         measures={[

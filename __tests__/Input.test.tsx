@@ -80,8 +80,6 @@ describe('Input Component', () => {
     expect(results).toHaveNoViolations();
   });
   it('Should show inline error message if input error is invalid', async () => {
-    const user = userEvent.setup();
-
     const InputWithForm = () => {
       const type = 'text';
       const name = 'firstName';
